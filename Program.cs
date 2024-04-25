@@ -86,11 +86,10 @@ namespace Processing_Damped_spring_SHM_data
                             Console.WriteLine("Time of max and min height:  " + maxHeight + ", " + minHeight);
                             
                             double amplitude = .5 * (maxHeight - minHeight);
-                            amplitude = Math.Round(amplitude, 3);
-                            Console.WriteLine("Value for amplitude:         " + amplitude);
+                            amplitude = amplitude;
+                            Console.WriteLine("Value for amplitude:         " + Math.Round(amplitude, 3, MidpointRounding.AwayFromZero));
                             double lnAmplitude = Math.Log(amplitude);
-                            lnAmplitude = Math.Round(lnAmplitude, 3);
-                            Console.WriteLine("Log of amplitude:            " + lnAmplitude);
+                            Console.WriteLine("Log of amplitude:            " + Math.Round(lnAmplitude, 3, MidpointRounding.AwayFromZero));
                             
                             Console.WriteLine();
 
