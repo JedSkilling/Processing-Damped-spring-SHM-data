@@ -8,7 +8,7 @@ namespace Processing_Damped_spring_SHM_data
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine(Math.Round(1.5, 0));
             ProcessData();
         }
 
@@ -58,7 +58,7 @@ namespace Processing_Damped_spring_SHM_data
                             timeOfMax = previousDoubles[0];
                         }
                         timeOfMax = Math.Round(timeOfMax, 3);
-                        maxHeight = Math.Round(maxHeight, 3);
+                        
                         waitingForMin = true;
 
 
@@ -77,19 +77,19 @@ namespace Processing_Damped_spring_SHM_data
                             timeOfMin = previousDoubles[0];
                         }
                         timeOfMin = Math.Round(timeOfMin, 3);
-                        minHeight = Math.Round(minHeight, 3);
+                        
 
                         if (nthMax % 5 == 0)
                         {
                             Console.WriteLine("No. Oscillations:            " + nthMax);
                             Console.WriteLine("Time of maxima:              " + timeOfMax);
-                            Console.WriteLine("Time of max and min height:  " + maxHeight + ", " + minHeight);
+                            Console.WriteLine("Time of max and min height:  " + Math.Round(maxHeight, 3) + ", " + Math.Round(minHeight, 3));
                             
                             double amplitude = .5 * (maxHeight - minHeight);
-                            amplitude = amplitude;
+                            
                             Console.WriteLine("Value for amplitude:         " + Math.Round(amplitude, 3, MidpointRounding.AwayFromZero));
                             double lnAmplitude = Math.Log(amplitude);
-                            Console.WriteLine("Log of amplitude:            " + Math.Round(lnAmplitude, 3, MidpointRounding.AwayFromZero));
+                            Console.WriteLine("Log of amplitude:            " + Math.Round(lnAmplitude, 2, MidpointRounding.AwayFromZero));
                             
                             Console.WriteLine();
 
