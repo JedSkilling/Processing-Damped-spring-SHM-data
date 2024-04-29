@@ -8,17 +8,26 @@ namespace Processing_Damped_spring_SHM_data
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Math.Round(1.5, 0));
-            ProcessData();
+            Console.WriteLine("Enter the full address of the csv file below:");
+            string filename = Console.ReadLine();
+            Console.Write("\n---------------- Start of data ----------------\n\n");
+            ProcessData(filename);
         }
 
-        static void ProcessData()
+        static void ProcessData(string filename)
         {
-            using (StreamReader MyStream = new StreamReader("C:\\Users\\jedsk\\Documents\\_My Documents\\Work\\A Level\\Physics\\dampedSpringSHMPractical.csv"))
+            using (StreamReader MyStream = new StreamReader(filename))
             {
                 MyStream.ReadLine();
-                //List<string> Items = MyStream.ReadLine().Split(',').ToList();   //  Creates the pattern
-                //int NoOfSymbols = Convert.ToInt32(MyStream.ReadLine()); //  First line gives number of allowed symbols
+
+                //  Splits the next line into seperate strings
+                //List<string> Items = MyStream.ReadLine().Split(',').ToList();   
+
+                //  Gets the next line from the file
+                //int LineFromFile = Convert.ToInt32(MyStream.ReadLine());  
+
+
+                //  Setup the first record as being the previous record (We will start running through on the second record)
                 List<string> previousItems = MyStream.ReadLine().Split(',').ToList();
                 List<double> previousDoubles = new List<double>();
                 foreach (string item in previousItems)
@@ -31,7 +40,7 @@ namespace Processing_Damped_spring_SHM_data
                 double timeOfMax = 0;
 
                 double minHeight = 0;
-                double timeOfMin = 0;
+                double timeOfMin = 0;   //  Not used currently
                 while (MyStream.EndOfStream == false)
                 {
                     
@@ -76,11 +85,12 @@ namespace Processing_Damped_spring_SHM_data
                             minHeight = previousDoubles[1];
                             timeOfMin = previousDoubles[0];
                         }
-                        timeOfMin = Math.Round(timeOfMin, 3);
+                        timeOfMin = Math.Round(timeOfMin, 3);   //  Not used currently
                         
 
                         if (nthMax % 5 == 0)
                         {
+                            //  Rounding is left to the very end
                             Console.WriteLine("No. Oscillations:            " + nthMax);
                             Console.WriteLine("Time of maxima:              " + timeOfMax);
                             Console.WriteLine("Time of max and min height:  " + Math.Round(maxHeight, 3) + ", " + Math.Round(minHeight, 3));
@@ -107,7 +117,7 @@ namespace Processing_Damped_spring_SHM_data
 
 
 
-                    previousItems = Items;
+                    previousItems = Items;   //  Not used currently
                     previousDoubles = doubles;
                 }
 
